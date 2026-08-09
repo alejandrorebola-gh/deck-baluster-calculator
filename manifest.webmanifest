@@ -1,0 +1,17 @@
+{
+  "name": "Deck Baluster Spacing Calculator",
+  "short_name": "Baluster Spacing",
+  "description": "Calculate even deck baluster spacing with a four-inch maximum gap.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f0e6",
+  "theme_color": "#163c2e",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

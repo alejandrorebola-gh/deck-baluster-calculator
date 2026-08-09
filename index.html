@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#163c2e" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Baluster Spacing" />
+    <meta
+      name="description"
+      content="A mobile-friendly calculator for safe, evenly spaced deck balusters."
+    />
+    <title>Baluster Spacing Calculator</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <p class="eyebrow">Deck layout tool</p>
+        <h1>Baluster spacing</h1>
+        <p class="intro">Find the fewest balusters needed for equal gaps no larger than 4 inches.</p>
+      </header>
+
+      <section class="card form-card" aria-labelledby="measurements-heading">
+        <div class="section-heading">
+          <div>
+            <p class="step">Step 1</p>
+            <h2 id="measurements-heading">Measure the opening</h2>
+          </div>
+          <span class="limit-badge">4″ max gap</span>
+        </div>
+
+        <p class="hint">Measure the clear distance between the inside faces of the posts.</p>
+
+        <div class="measurement-grid" aria-label="Opening width">
+          <label>
+            <span>Feet</span>
+            <select id="feet" aria-label="Opening width feet"></select>
+          </label>
+          <label>
+            <span>Inches</span>
+            <select id="inches" aria-label="Opening width inches"></select>
+          </label>
+          <label>
+            <span>Fraction</span>
+            <select id="fraction" aria-label="Opening width fraction of an inch"></select>
+          </label>
+        </div>
+
+        <div class="field-group">
+          <label for="baluster-width">Baluster width</label>
+          <div class="input-with-unit">
+            <input
+              id="baluster-width"
+              type="number"
+              min="0.125"
+              max="12"
+              step="0.125"
+              value="1.5"
+              inputmode="decimal"
+              enterkeyhint="done"
+              autocomplete="off"
+            />
+            <span aria-hidden="true">inches</span>
+          </div>
+          <div class="presets" aria-label="Common baluster widths">
+            <button type="button" data-width="0.5">½″</button>
+            <button type="button" data-width="0.75">¾″</button>
+            <button type="button" data-width="1">1″</button>
+            <button type="button" data-width="1.5" class="active">1½″</button>
+            <button type="button" data-width="2">2″</button>
+          </div>
+        </div>
+
+        <p id="error" class="error" role="alert" hidden></p>
+      </section>
+
+      <section class="card results-card" aria-labelledby="results-heading" aria-live="polite">
+        <div class="section-heading">
+          <div>
+            <p class="step">Step 2</p>
+            <h2 id="results-heading">Your layout</h2>
+          </div>
+          <span id="status" class="status">Within limit</span>
+        </div>
+
+        <div class="primary-result">
+          <span class="result-label">Total balusters</span>
+          <strong id="baluster-count">—</strong>
+        </div>
+
+        <div class="gap-results">
+          <div>
+            <span>First gap</span>
+            <strong id="first-gap">—</strong>
+          </div>
+          <div>
+            <span>Between each</span>
+            <strong id="middle-gap">—</strong>
+          </div>
+          <div>
+            <span>Last gap</span>
+            <strong id="last-gap">—</strong>
+          </div>
+        </div>
+
+        <figure class="diagram" aria-labelledby="diagram-caption">
+          <div id="rail-diagram" class="rail" aria-hidden="true"></div>
+          <figcaption id="diagram-caption">All clear gaps are equal, including both ends.</figcaption>
+        </figure>
+
+        <div class="summary" id="summary">Enter the opening measurement to see the layout.</div>
+      </section>
+
+      <p class="disclaimer">
+        Field calculator only. Confirm your local building code and measure the actual clear opening before installation.
+      </p>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
